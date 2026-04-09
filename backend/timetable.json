@@ -1,0 +1,1201 @@
+{
+  "users": [
+    {
+      "name": "omkar",
+      "role": "student",
+      "className": "SecondYear_A",
+      "timetableMode": "template",
+      "updatedAt": "2026-04-09T22:28:41"
+    },
+    {
+      "name": "omkar",
+      "role": "teacher",
+      "className": null,
+      "timetableMode": null,
+      "updatedAt": "2026-04-09T22:19:29"
+    },
+    {
+      "name": "Aarav",
+      "role": "student",
+      "className": "SecondYear_A",
+      "timetableMode": "template",
+      "updatedAt": "2026-04-09T22:28:42"
+    },
+    {
+      "name": "Nirmal Sir",
+      "role": "teacher",
+      "className": null,
+      "timetableMode": null,
+      "updatedAt": "2026-04-09T22:24:06"
+    }
+  ],
+  "timetable": {
+    "SecondYear_A": {
+      "Monday": [
+        {
+          "time": "09:30 AM",
+          "subject": "DBMS",
+          "teacher": "Nirmal Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "OOP",
+          "teacher": "Patil Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "DSA",
+          "teacher": "Joshi Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "CN",
+          "teacher": "Kulkarni Sir",
+          "day": "Monday"
+        }
+      ],
+      "Tuesday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Maths",
+          "teacher": "Shinde Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "DBMS Lab",
+          "teacher": "Nirmal Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "12:00 PM",
+          "subject": "OOP",
+          "teacher": "Patil Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Library",
+          "teacher": "Staff",
+          "day": "Tuesday"
+        }
+      ],
+      "Wednesday": [
+        {
+          "time": "09:30 AM",
+          "subject": "CN",
+          "teacher": "Kulkarni Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "DBMS",
+          "teacher": "Nirmal Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "OOP Lab",
+          "teacher": "Patil Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Mini Project",
+          "teacher": "Joshi Sir",
+          "day": "Wednesday"
+        }
+      ],
+      "Thursday": [
+        {
+          "time": "09:30 AM",
+          "subject": "DSA",
+          "teacher": "Joshi Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "Maths",
+          "teacher": "Shinde Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "CN",
+          "teacher": "Kulkarni Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Mentoring",
+          "teacher": "Class Incharge",
+          "day": "Thursday"
+        }
+      ],
+      "Friday": [
+        {
+          "time": "09:30 AM",
+          "subject": "DBMS",
+          "teacher": "Nirmal Sir",
+          "day": "Friday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "OOP",
+          "teacher": "Patil Sir",
+          "day": "Friday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "CN",
+          "teacher": "Kulkarni Sir",
+          "day": "Friday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Seminar",
+          "teacher": "Department Team",
+          "day": "Friday"
+        }
+      ],
+      "Saturday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Aptitude",
+          "teacher": "Training Cell",
+          "day": "Saturday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "Project Lab",
+          "teacher": "Joshi Sir",
+          "day": "Saturday"
+        }
+      ]
+    },
+    "SecondYear_B": {
+      "Monday": [
+        {
+          "time": "09:30 AM",
+          "subject": "OOP",
+          "teacher": "Patil Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "DBMS",
+          "teacher": "Nirmal Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "Maths",
+          "teacher": "Shinde Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "CN",
+          "teacher": "Kulkarni Sir",
+          "day": "Monday"
+        }
+      ],
+      "Tuesday": [
+        {
+          "time": "09:30 AM",
+          "subject": "DSA",
+          "teacher": "Joshi Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "CN Lab",
+          "teacher": "Kulkarni Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "12:00 PM",
+          "subject": "DBMS",
+          "teacher": "Nirmal Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "OOP",
+          "teacher": "Patil Sir",
+          "day": "Tuesday"
+        }
+      ],
+      "Wednesday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Maths",
+          "teacher": "Shinde Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "DBMS Lab",
+          "teacher": "Nirmal Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "DSA",
+          "teacher": "Joshi Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "OOP",
+          "teacher": "Patil Sir",
+          "day": "Wednesday"
+        }
+      ],
+      "Thursday": [
+        {
+          "time": "09:30 AM",
+          "subject": "CN",
+          "teacher": "Kulkarni Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "Maths",
+          "teacher": "Shinde Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "Mentoring",
+          "teacher": "Class Incharge",
+          "day": "Thursday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "DBMS",
+          "teacher": "Nirmal Sir",
+          "day": "Thursday"
+        }
+      ],
+      "Friday": [
+        {
+          "time": "09:30 AM",
+          "subject": "math",
+          "teacher": "omkar",
+          "day": "Friday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "DSA Lab",
+          "teacher": "Joshi Sir",
+          "day": "Friday"
+        },
+        {
+          "time": "12:00 PM",
+          "subject": "CN",
+          "teacher": "Kulkarni Sir",
+          "day": "Friday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "DBMS",
+          "teacher": "Nirmal Sir",
+          "day": "Friday"
+        }
+      ],
+      "Saturday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Workshop",
+          "teacher": "Department Team",
+          "day": "Saturday"
+        },
+        {
+          "time": "11:00 AM",
+          "subject": "Sports",
+          "teacher": "College Cell",
+          "day": "Saturday"
+        }
+      ]
+    },
+    "ThirdYear": {
+      "Monday": [
+        {
+          "time": "09:30 AM",
+          "subject": "AI",
+          "teacher": "Rakshe Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "Web Tech",
+          "teacher": "Jondhale Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "DSBDA",
+          "teacher": "Pulate Madam",
+          "day": "Monday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Elective",
+          "teacher": "Guest Faculty",
+          "day": "Monday"
+        }
+      ],
+      "Tuesday": [
+        {
+          "time": "09:30 AM",
+          "subject": "AI Lab",
+          "teacher": "Rakshe Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "11:00 AM",
+          "subject": "Web Tech",
+          "teacher": "Jondhale Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "12:00 PM",
+          "subject": "DSBDA",
+          "teacher": "Pulate Madam",
+          "day": "Tuesday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Placement Training",
+          "teacher": "Training Cell",
+          "day": "Tuesday"
+        }
+      ],
+      "Wednesday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Mini Project",
+          "teacher": "Guide Panel",
+          "day": "Wednesday"
+        },
+        {
+          "time": "11:00 AM",
+          "subject": "AI",
+          "teacher": "Rakshe Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "12:00 PM",
+          "subject": "Web Tech Lab",
+          "teacher": "Jondhale Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "DSBDA",
+          "teacher": "Pulate Madam",
+          "day": "Wednesday"
+        }
+      ],
+      "Thursday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Elective",
+          "teacher": "Guest Faculty",
+          "day": "Thursday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "Web Tech",
+          "teacher": "Jondhale Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "AI",
+          "teacher": "Rakshe Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Project Review",
+          "teacher": "Guide Panel",
+          "day": "Thursday"
+        }
+      ],
+      "Friday": [
+        {
+          "time": "09:30 AM",
+          "subject": "DSBDA Lab",
+          "teacher": "Pulate Madam",
+          "day": "Friday"
+        },
+        {
+          "time": "11:00 AM",
+          "subject": "AI",
+          "teacher": "Rakshe Sir",
+          "day": "Friday"
+        },
+        {
+          "time": "12:00 PM",
+          "subject": "Web Tech",
+          "teacher": "Jondhale Sir",
+          "day": "Friday"
+        }
+      ],
+      "Saturday": [
+        {
+          "time": "10:00 AM",
+          "subject": "Hackathon Prep",
+          "teacher": "Department Team",
+          "day": "Saturday"
+        }
+      ]
+    },
+    "FourthYear": {
+      "Monday": [
+        {
+          "time": "09:30 AM",
+          "subject": "NLP",
+          "teacher": "Kote Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "BI",
+          "teacher": "Tamhane Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "HPC",
+          "teacher": "Vikhe Sir",
+          "day": "Monday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Project",
+          "teacher": "Guide",
+          "day": "Monday"
+        }
+      ],
+      "Tuesday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Deep Learning",
+          "teacher": "Bendre Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "NLP Lab",
+          "teacher": "Kote Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "12:00 PM",
+          "subject": "BI",
+          "teacher": "Tamhane Sir",
+          "day": "Tuesday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Project",
+          "teacher": "Guide",
+          "day": "Tuesday"
+        }
+      ],
+      "Wednesday": [
+        {
+          "time": "09:30 AM",
+          "subject": "HPC Lab",
+          "teacher": "Vikhe Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "11:00 AM",
+          "subject": "Deep Learning",
+          "teacher": "Bendre Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "12:00 PM",
+          "subject": "NLP",
+          "teacher": "Kote Sir",
+          "day": "Wednesday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Placement Prep",
+          "teacher": "Training Cell",
+          "day": "Wednesday"
+        }
+      ],
+      "Thursday": [
+        {
+          "time": "09:30 AM",
+          "subject": "BI",
+          "teacher": "Tamhane Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "10:30 AM",
+          "subject": "HPC",
+          "teacher": "Vikhe Sir",
+          "day": "Thursday"
+        },
+        {
+          "time": "11:30 AM",
+          "subject": "Project Review",
+          "teacher": "Guide Panel",
+          "day": "Thursday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Mock Interview",
+          "teacher": "Alumni Cell",
+          "day": "Thursday"
+        }
+      ],
+      "Friday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Project Work",
+          "teacher": "Guide",
+          "day": "Friday"
+        },
+        {
+          "time": "11:00 AM",
+          "subject": "Project Work",
+          "teacher": "Guide",
+          "day": "Friday"
+        },
+        {
+          "time": "02:15 PM",
+          "subject": "Seminar",
+          "teacher": "Department Team",
+          "day": "Friday"
+        }
+      ],
+      "Saturday": [
+        {
+          "time": "10:00 AM",
+          "subject": "Industry Session",
+          "teacher": "Guest Speaker",
+          "day": "Saturday"
+        }
+      ]
+    }
+  },
+  "customTimetable": {
+    "aarav": {
+      "Monday": [
+        {
+          "time": "09:30 AM",
+          "subject": "Robotics",
+          "teacher": "Mehta Sir",
+          "day": "Monday"
+        }
+      ],
+      "Tuesday": [],
+      "Wednesday": [],
+      "Thursday": [],
+      "Friday": [],
+      "Saturday": []
+    }
+  },
+  "teacherSchedule": [
+    {
+      "time": "09:30 AM",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
+      "day": "Monday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "Maths",
+      "teacher": "Shinde Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "CN",
+      "teacher": "Kulkarni Sir",
+      "day": "Wednesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "DSA",
+      "teacher": "Joshi Sir",
+      "day": "Thursday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
+      "day": "Friday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "Aptitude",
+      "teacher": "Training Cell",
+      "day": "Saturday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "OOP",
+      "teacher": "Patil Sir",
+      "day": "Monday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "DSA",
+      "teacher": "Joshi Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "Maths",
+      "teacher": "Shinde Sir",
+      "day": "Wednesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "CN",
+      "teacher": "Kulkarni Sir",
+      "day": "Thursday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "math",
+      "teacher": "omkar",
+      "day": "Friday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "Workshop",
+      "teacher": "Department Team",
+      "day": "Saturday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "AI",
+      "teacher": "Rakshe Sir",
+      "day": "Monday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "AI Lab",
+      "teacher": "Rakshe Sir",
+      "day": "Tuesday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "Mini Project",
+      "teacher": "Guide Panel",
+      "day": "Wednesday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "Elective",
+      "teacher": "Guest Faculty",
+      "day": "Thursday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "DSBDA Lab",
+      "teacher": "Pulate Madam",
+      "day": "Friday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "NLP",
+      "teacher": "Kote Sir",
+      "day": "Monday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "Deep Learning",
+      "teacher": "Bendre Sir",
+      "day": "Tuesday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "HPC Lab",
+      "teacher": "Vikhe Sir",
+      "day": "Wednesday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "BI",
+      "teacher": "Tamhane Sir",
+      "day": "Thursday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "09:30 AM",
+      "subject": "Project Work",
+      "teacher": "Guide",
+      "day": "Friday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "10:00 AM",
+      "subject": "Hackathon Prep",
+      "teacher": "Department Team",
+      "day": "Saturday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "10:00 AM",
+      "subject": "Industry Session",
+      "teacher": "Guest Speaker",
+      "day": "Saturday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "OOP",
+      "teacher": "Patil Sir",
+      "day": "Monday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "DBMS Lab",
+      "teacher": "Nirmal Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
+      "day": "Wednesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "Maths",
+      "teacher": "Shinde Sir",
+      "day": "Thursday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "OOP",
+      "teacher": "Patil Sir",
+      "day": "Friday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "Project Lab",
+      "teacher": "Joshi Sir",
+      "day": "Saturday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
+      "day": "Monday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "CN Lab",
+      "teacher": "Kulkarni Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "DBMS Lab",
+      "teacher": "Nirmal Sir",
+      "day": "Wednesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "Maths",
+      "teacher": "Shinde Sir",
+      "day": "Thursday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "DSA Lab",
+      "teacher": "Joshi Sir",
+      "day": "Friday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "Web Tech",
+      "teacher": "Jondhale Sir",
+      "day": "Monday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "Web Tech",
+      "teacher": "Jondhale Sir",
+      "day": "Thursday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "BI",
+      "teacher": "Tamhane Sir",
+      "day": "Monday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "NLP Lab",
+      "teacher": "Kote Sir",
+      "day": "Tuesday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "10:30 AM",
+      "subject": "HPC",
+      "teacher": "Vikhe Sir",
+      "day": "Thursday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "11:00 AM",
+      "subject": "Sports",
+      "teacher": "College Cell",
+      "day": "Saturday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "11:00 AM",
+      "subject": "Web Tech",
+      "teacher": "Jondhale Sir",
+      "day": "Tuesday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "11:00 AM",
+      "subject": "AI",
+      "teacher": "Rakshe Sir",
+      "day": "Wednesday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "11:00 AM",
+      "subject": "AI",
+      "teacher": "Rakshe Sir",
+      "day": "Friday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "11:00 AM",
+      "subject": "Deep Learning",
+      "teacher": "Bendre Sir",
+      "day": "Wednesday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "11:00 AM",
+      "subject": "Project Work",
+      "teacher": "Guide",
+      "day": "Friday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "DSA",
+      "teacher": "Joshi Sir",
+      "day": "Monday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "OOP Lab",
+      "teacher": "Patil Sir",
+      "day": "Wednesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "CN",
+      "teacher": "Kulkarni Sir",
+      "day": "Thursday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "CN",
+      "teacher": "Kulkarni Sir",
+      "day": "Friday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "Maths",
+      "teacher": "Shinde Sir",
+      "day": "Monday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "DSA",
+      "teacher": "Joshi Sir",
+      "day": "Wednesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "Mentoring",
+      "teacher": "Class Incharge",
+      "day": "Thursday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "DSBDA",
+      "teacher": "Pulate Madam",
+      "day": "Monday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "AI",
+      "teacher": "Rakshe Sir",
+      "day": "Thursday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "HPC",
+      "teacher": "Vikhe Sir",
+      "day": "Monday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "Project Review",
+      "teacher": "Guide Panel",
+      "day": "Thursday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "12:00 PM",
+      "subject": "OOP",
+      "teacher": "Patil Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "12:00 PM",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "12:00 PM",
+      "subject": "CN",
+      "teacher": "Kulkarni Sir",
+      "day": "Friday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "12:00 PM",
+      "subject": "DSBDA",
+      "teacher": "Pulate Madam",
+      "day": "Tuesday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "12:00 PM",
+      "subject": "Web Tech Lab",
+      "teacher": "Jondhale Sir",
+      "day": "Wednesday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "12:00 PM",
+      "subject": "Web Tech",
+      "teacher": "Jondhale Sir",
+      "day": "Friday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "12:00 PM",
+      "subject": "BI",
+      "teacher": "Tamhane Sir",
+      "day": "Tuesday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "12:00 PM",
+      "subject": "NLP",
+      "teacher": "Kote Sir",
+      "day": "Wednesday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "CN",
+      "teacher": "Kulkarni Sir",
+      "day": "Monday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Library",
+      "teacher": "Staff",
+      "day": "Tuesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Mini Project",
+      "teacher": "Joshi Sir",
+      "day": "Wednesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Mentoring",
+      "teacher": "Class Incharge",
+      "day": "Thursday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Seminar",
+      "teacher": "Department Team",
+      "day": "Friday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "CN",
+      "teacher": "Kulkarni Sir",
+      "day": "Monday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "OOP",
+      "teacher": "Patil Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "OOP",
+      "teacher": "Patil Sir",
+      "day": "Wednesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
+      "day": "Thursday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
+      "day": "Friday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Elective",
+      "teacher": "Guest Faculty",
+      "day": "Monday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Placement Training",
+      "teacher": "Training Cell",
+      "day": "Tuesday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "DSBDA",
+      "teacher": "Pulate Madam",
+      "day": "Wednesday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Project Review",
+      "teacher": "Guide Panel",
+      "day": "Thursday",
+      "className": "ThirdYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Project",
+      "teacher": "Guide",
+      "day": "Monday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Project",
+      "teacher": "Guide",
+      "day": "Tuesday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Placement Prep",
+      "teacher": "Training Cell",
+      "day": "Wednesday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Mock Interview",
+      "teacher": "Alumni Cell",
+      "day": "Thursday",
+      "className": "FourthYear"
+    },
+    {
+      "time": "02:15 PM",
+      "subject": "Seminar",
+      "teacher": "Department Team",
+      "day": "Friday",
+      "className": "FourthYear"
+    }
+  ]
+}
