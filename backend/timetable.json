@@ -5,28 +5,35 @@
       "role": "student",
       "className": "SecondYear_A",
       "timetableMode": "template",
-      "updatedAt": "2026-04-09T22:28:41"
+      "updatedAt": "2026-04-09T22:41:58"
     },
     {
       "name": "omkar",
       "role": "teacher",
       "className": null,
       "timetableMode": null,
-      "updatedAt": "2026-04-09T22:19:29"
+      "updatedAt": "2026-04-09T22:59:27"
     },
     {
       "name": "Aarav",
       "role": "student",
       "className": "SecondYear_A",
       "timetableMode": "template",
-      "updatedAt": "2026-04-09T22:28:42"
+      "updatedAt": "2026-04-09T22:58:57"
     },
     {
       "name": "Nirmal Sir",
       "role": "teacher",
       "className": null,
       "timetableMode": null,
-      "updatedAt": "2026-04-09T22:24:06"
+      "updatedAt": "2026-04-09T22:58:17"
+    },
+    {
+      "name": "raj",
+      "role": "teacher",
+      "className": null,
+      "timetableMode": null,
+      "updatedAt": "2026-04-09T22:43:23"
     }
   ],
   "timetable": {
@@ -34,8 +41,8 @@
       "Monday": [
         {
           "time": "09:30 AM",
-          "subject": "DBMS",
-          "teacher": "Nirmal Sir",
+          "subject": "math",
+          "teacher": "omkar",
           "day": "Monday"
         },
         {
@@ -326,8 +333,8 @@
       "Monday": [
         {
           "time": "09:30 AM",
-          "subject": "AI",
-          "teacher": "Rakshe Sir",
+          "subject": "omkar",
+          "teacher": "omkar",
           "day": "Monday"
         },
         {
@@ -611,8 +618,8 @@
   "teacherSchedule": [
     {
       "time": "09:30 AM",
-      "subject": "DBMS",
-      "teacher": "Nirmal Sir",
+      "subject": "math",
+      "teacher": "omkar",
       "day": "Monday",
       "className": "SecondYear_A"
     },
@@ -695,8 +702,8 @@
     },
     {
       "time": "09:30 AM",
-      "subject": "AI",
-      "teacher": "Rakshe Sir",
+      "subject": "omkar",
+      "teacher": "omkar",
       "day": "Monday",
       "className": "ThirdYear"
     },

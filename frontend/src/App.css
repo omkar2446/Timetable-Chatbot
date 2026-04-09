@@ -117,7 +117,8 @@
 .preview-card,
 .chat-panel,
 .compact-panel,
-.schedule-panel {
+.schedule-panel,
+.notify-panel {
   padding: 24px;
 }
 

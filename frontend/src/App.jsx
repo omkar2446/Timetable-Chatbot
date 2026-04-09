@@ -504,6 +504,7 @@ function App() {
 
             <div className="side-column">
               <SchedulePanel todayData={todayData} role={user.role} />
+              <NotificationSystem lectures={todayData.lectures} nextLecture={todayData.nextLecture} />
 
               {user.role === 'teacher' && (
                 <div className="glass-card compact-panel">
@@ -522,7 +523,6 @@ function App() {
               )}
             </div>
 
-            <NotificationSystem lectures={todayData.lectures} role={user.role} />
           </section>
         )}
       </main>
