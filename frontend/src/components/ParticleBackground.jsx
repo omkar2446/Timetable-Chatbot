@@ -7,16 +7,16 @@ const ParticleBackground = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    
+
     let animationFrameId;
     let particles = [];
-    
+
     // Wave parameters defining the dot grid
     const xSpacing = 45;
     const zSpacing = 45;
     const cols = 45;
     const rows = 35;
-    
+
     // Interactive mouse tracking
     let mouse = { x: -1000, y: -1000 };
     const handleMouseMove = (e) => {
@@ -29,7 +29,7 @@ const ParticleBackground = () => {
     };
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
-    
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -45,13 +45,13 @@ const ParticleBackground = () => {
         this.baseX = (ix - cols / 2) * xSpacing;
         this.baseZ = iz * zSpacing;
         this.y = 0;
-        
+
         // Horizontal color mapping perfectly matching Antigravity aesthetics
         const t = ix / cols;
         const r = Math.floor(t * 236 + (1 - t) * 66);
         const g = Math.floor(t * 72 + (1 - t) * 133);
         const b = Math.floor(t * 153 + (1 - t) * 244);
-        
+
         this.color = `rgb(${r}, ${g}, ${b})`;
       }
 
@@ -63,35 +63,35 @@ const ParticleBackground = () => {
 
       draw(cx, cy) {
         const fov = 300;
-        const viewZ = this.baseZ + 150; 
-        
+        const viewZ = this.baseZ + 150;
+
         if (viewZ <= 0) return;
-        
+
         const scale = fov / viewZ;
         let screenX = cx + this.baseX * scale;
         let screenY = cy + (this.y + 120) * scale;
-        
+
         let size = Math.max(0.7, 3 * scale);
-        
+
         // Geometric Cursor Reaction: Push dots away fluidly like a magnet!
         const dx = screenX - mouse.x;
         const dy = screenY - mouse.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         const interactionRadius = 130;
-        
+
         if (distance < interactionRadius) {
           const force = (interactionRadius - distance) / interactionRadius;
           const forceX = (dx / distance) * force * 40;
           const forceY = (dy / distance) * force * 40;
-          
+
           screenX += forceX;
           screenY += forceY;
           size += force * 2.5; // Dots swell beautifully as they repel
         }
-        
+
         // Depth-based opacity fading naturally into the horizon
         const opacity = Math.max(0, Math.min(1, 1 - (this.baseZ / (rows * zSpacing))));
-        
+
         ctx.save();
         ctx.globalAlpha = opacity;
         ctx.fillStyle = this.color;
@@ -112,9 +112,9 @@ const ParticleBackground = () => {
     };
 
     const animate = (timeRaw) => {
-      const time = timeRaw * 0.0015; 
+      const time = timeRaw * 0.0015;
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      
+
       // Crisp minimal background color
       ctx.fillStyle = isDark ? '#050508' : '#ffffff';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
