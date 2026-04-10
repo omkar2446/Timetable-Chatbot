@@ -250,6 +250,25 @@ function App() {
     setStep(mode === 'custom' ? 'student-upload' : 'student-template')
   }
 
+  const handleBack = () => {
+    setStatusMessage('')
+    switch (step) {
+      case 'role':
+        setStep('name')
+        break
+      case 'student-mode':
+      case 'teacher-setup':
+        setStep('role')
+        break
+      case 'student-upload':
+      case 'student-template':
+        setStep('student-mode')
+        break
+      default:
+        break
+    }
+  }
+
   const addStudentEntry = () => {
     if (!studentEntry.subject.trim() || !studentEntry.teacher.trim()) {
       setStatusMessage('Add subject and teacher before saving the entry.')
@@ -385,6 +404,16 @@ function App() {
             <div className="glass-panel setup-panel fade-in">
               <div className="brand-header" style={{ justifyContent: 'space-between', width: '100%' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  {step !== 'name' && step !== 'chat' && (
+                    <Button
+                      variant="ghost"
+                      onClick={handleBack}
+                      style={{ padding: '0.25rem 0.5rem', marginRight: '4px' }}
+                      title="Go Back"
+                    >
+                      ←
+                    </Button>
+                  )}
                   <Logo className="brand-logo" />
                   <h1>ParvAI</h1>
                 </div>
@@ -503,6 +532,14 @@ function App() {
             <div className="chat-container glass-panel">
               <header className="chat-header">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <Button
+                    variant="ghost"
+                    onClick={() => setStep(user.role === 'teacher' ? 'teacher-setup' : 'student-mode')}
+                    style={{ padding: '0.25rem 0.5rem', marginRight: '4px' }}
+                    title="Go Back to Setup"
+                  >
+                    ←
+                  </Button>
                   <Logo className="brand-logo" style={{ width: '28px', height: '28px' }} />
                   <div>
                     <h2 className="header-title">ParvAI</h2>

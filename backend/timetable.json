@@ -13,6 +13,13 @@
       "className": "SecondYear_A",
       "timetableMode": "template",
       "updatedAt": "2026-04-11T02:59:53"
+    },
+    {
+      "name": "omkaar",
+      "role": "student",
+      "className": "SecondYear_A",
+      "timetableMode": "template",
+      "updatedAt": "2026-04-11T03:48:33"
     }
   ],
   "timetable": {
