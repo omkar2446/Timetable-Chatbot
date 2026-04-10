@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import LoadingSkeleton from './LoadingSkeleton'
+import ReactMarkdown from 'react-markdown'
 
 function ChatBox({ messages, loading }) {
   const viewportRef = useRef(null)
@@ -20,19 +21,16 @@ function ChatBox({ messages, loading }) {
         </div>
       )}
       {messages.map((message) => (
-        <article key={message.id} className={`chat-bubble ${message.sender}`}>
-          <p>{message.text}</p>
-          <span>{message.time}</span>
+        <article key={message.id} className={`message-blob ${message.sender}`}>
+          <div className="message-content">
+            <ReactMarkdown>{message.text}</ReactMarkdown>
+          </div>
+          <span className="message-time">{message.time}</span>
         </article>
       ))}
       {loading && (
-        <article className="chat-bubble bot pending">
-          <div className="typing-indicator" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
-          <LoadingSkeleton lines={2} compact className="chat-skeleton" />
+        <article className="message-blob bot pending">
+          <LoadingSkeleton type="typing" className="chat-skeleton" />
         </article>
       )}
     </div>
