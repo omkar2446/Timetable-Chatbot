@@ -5,35 +5,7 @@
       "role": "student",
       "className": "SecondYear_A",
       "timetableMode": "template",
-      "updatedAt": "2026-04-09T22:41:58"
-    },
-    {
-      "name": "omkar",
-      "role": "teacher",
-      "className": null,
-      "timetableMode": null,
-      "updatedAt": "2026-04-09T22:59:27"
-    },
-    {
-      "name": "Aarav",
-      "role": "student",
-      "className": "SecondYear_A",
-      "timetableMode": "template",
-      "updatedAt": "2026-04-09T22:58:57"
-    },
-    {
-      "name": "Nirmal Sir",
-      "role": "teacher",
-      "className": null,
-      "timetableMode": null,
-      "updatedAt": "2026-04-09T22:58:17"
-    },
-    {
-      "name": "raj",
-      "role": "teacher",
-      "className": null,
-      "timetableMode": null,
-      "updatedAt": "2026-04-09T22:43:23"
+      "updatedAt": "2026-04-09T23:55:21"
     }
   ],
   "timetable": {
@@ -41,8 +13,8 @@
       "Monday": [
         {
           "time": "09:30 AM",
-          "subject": "math",
-          "teacher": "omkar",
+          "subject": "DBMS",
+          "teacher": "Nirmal Sir",
           "day": "Monday"
         },
         {
@@ -78,7 +50,7 @@
           "day": "Tuesday"
         },
         {
-          "time": "12:00 PM",
+          "time": "11:30 AM",
           "subject": "OOP",
           "teacher": "Patil Sir",
           "day": "Tuesday"
@@ -224,7 +196,7 @@
           "day": "Tuesday"
         },
         {
-          "time": "12:00 PM",
+          "time": "11:30 AM",
           "subject": "DBMS",
           "teacher": "Nirmal Sir",
           "day": "Tuesday"
@@ -291,8 +263,8 @@
       "Friday": [
         {
           "time": "09:30 AM",
-          "subject": "math",
-          "teacher": "omkar",
+          "subject": "OOP",
+          "teacher": "Patil Sir",
           "day": "Friday"
         },
         {
@@ -302,7 +274,7 @@
           "day": "Friday"
         },
         {
-          "time": "12:00 PM",
+          "time": "11:30 AM",
           "subject": "CN",
           "teacher": "Kulkarni Sir",
           "day": "Friday"
@@ -333,8 +305,8 @@
       "Monday": [
         {
           "time": "09:30 AM",
-          "subject": "omkar",
-          "teacher": "omkar",
+          "subject": "AI",
+          "teacher": "Rakshe Sir",
           "day": "Monday"
         },
         {
@@ -598,28 +570,12 @@
       ]
     }
   },
-  "customTimetable": {
-    "aarav": {
-      "Monday": [
-        {
-          "time": "09:30 AM",
-          "subject": "Robotics",
-          "teacher": "Mehta Sir",
-          "day": "Monday"
-        }
-      ],
-      "Tuesday": [],
-      "Wednesday": [],
-      "Thursday": [],
-      "Friday": [],
-      "Saturday": []
-    }
-  },
+  "customTimetable": {},
   "teacherSchedule": [
     {
       "time": "09:30 AM",
-      "subject": "math",
-      "teacher": "omkar",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
       "day": "Monday",
       "className": "SecondYear_A"
     },
@@ -688,8 +644,8 @@
     },
     {
       "time": "09:30 AM",
-      "subject": "math",
-      "teacher": "omkar",
+      "subject": "OOP",
+      "teacher": "Patil Sir",
       "day": "Friday",
       "className": "SecondYear_B"
     },
@@ -702,8 +658,8 @@
     },
     {
       "time": "09:30 AM",
-      "subject": "omkar",
-      "teacher": "omkar",
+      "subject": "AI",
+      "teacher": "Rakshe Sir",
       "day": "Monday",
       "className": "ThirdYear"
     },
@@ -947,6 +903,13 @@
     },
     {
       "time": "11:30 AM",
+      "subject": "OOP",
+      "teacher": "Patil Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_A"
+    },
+    {
+      "time": "11:30 AM",
       "subject": "OOP Lab",
       "teacher": "Patil Sir",
       "day": "Wednesday",
@@ -975,6 +938,13 @@
     },
     {
       "time": "11:30 AM",
+      "subject": "DBMS",
+      "teacher": "Nirmal Sir",
+      "day": "Tuesday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "11:30 AM",
       "subject": "DSA",
       "teacher": "Joshi Sir",
       "day": "Wednesday",
@@ -985,6 +955,13 @@
       "subject": "Mentoring",
       "teacher": "Class Incharge",
       "day": "Thursday",
+      "className": "SecondYear_B"
+    },
+    {
+      "time": "11:30 AM",
+      "subject": "CN",
+      "teacher": "Kulkarni Sir",
+      "day": "Friday",
       "className": "SecondYear_B"
     },
     {
@@ -1014,27 +991,6 @@
       "teacher": "Guide Panel",
       "day": "Thursday",
       "className": "FourthYear"
-    },
-    {
-      "time": "12:00 PM",
-      "subject": "OOP",
-      "teacher": "Patil Sir",
-      "day": "Tuesday",
-      "className": "SecondYear_A"
-    },
-    {
-      "time": "12:00 PM",
-      "subject": "DBMS",
-      "teacher": "Nirmal Sir",
-      "day": "Tuesday",
-      "className": "SecondYear_B"
-    },
-    {
-      "time": "12:00 PM",
-      "subject": "CN",
-      "teacher": "Kulkarni Sir",
-      "day": "Friday",
-      "className": "SecondYear_B"
     },
     {
       "time": "12:00 PM",

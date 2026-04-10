@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import Button from './Button'
 
 function InputBox({ onSend, loading }) {
   const [message, setMessage] = useState('')
@@ -31,20 +32,31 @@ function InputBox({ onSend, loading }) {
   }
 
   return (
-    <div className="input-box">
-      <button className="voice-button" onClick={handleVoiceInput} disabled={!speechRecognition || loading}>
-        Mic
-      </button>
-      <input
-        className="text-input chat-input"
-        value={message}
-        onChange={(event) => setMessage(event.target.value)}
-        onKeyDown={(event) => event.key === 'Enter' && handleSend()}
-        placeholder="Ask about lectures, teachers, or your next class..."
-      />
-      <button className="primary-button" onClick={handleSend} disabled={loading}>
-        Send
-      </button>
+    <div className="composer-shell">
+      <div className="composer-meta">
+        <span>Ask flexible questions like "monday 10 clock" or "next lecture"</span>
+        <span>{speechRecognition ? 'Voice input ready' : 'Voice input unavailable'}</span>
+      </div>
+      <div className="input-box">
+        <Button
+          className="voice-button"
+          variant="voice"
+          onClick={handleVoiceInput}
+          disabled={!speechRecognition || loading}
+        >
+          Mic
+        </Button>
+        <input
+          className="text-input chat-input"
+          value={message}
+          onChange={(event) => setMessage(event.target.value)}
+          onKeyDown={(event) => event.key === 'Enter' && handleSend()}
+          placeholder="Ask about lectures, teachers, or your next class..."
+        />
+        <Button className="send-button" variant="primary" onClick={handleSend} disabled={loading} loading={loading}>
+          Send
+        </Button>
+      </div>
     </div>
   )
 }

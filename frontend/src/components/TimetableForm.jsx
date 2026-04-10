@@ -1,4 +1,5 @@
 import { CLASS_OPTIONS, DAY_OPTIONS } from '../utils/time'
+import Button from './Button'
 
 function TimetableForm({
   mode,
@@ -81,17 +82,17 @@ function TimetableForm({
 
       <div className="action-row">
         {!isTeacher && (
-          <button className="ghost-button" onClick={onAddEntry}>
+          <Button className="ghost-button" variant="ghost" onClick={onAddEntry}>
             Add Entry
-          </button>
+          </Button>
         )}
-        <button className="primary-button" onClick={onSave} disabled={loading}>
+        <Button className="primary-button" variant="primary" onClick={onSave} disabled={loading} loading={loading}>
           {loading ? 'Saving...' : isTeacher ? 'Save Lecture' : 'Save Timetable'}
-        </button>
+        </Button>
         {isTeacher && onSecondaryAction && (
-          <button className="ghost-button" onClick={onSecondaryAction} disabled={loading}>
+          <Button className="ghost-button" variant="ghost" onClick={onSecondaryAction} disabled={loading}>
             Open Dashboard
-          </button>
+          </Button>
         )}
       </div>
 
@@ -107,9 +108,9 @@ function TimetableForm({
                 </span>
               </div>
               {!isTeacher && onRemoveEntry && (
-                <button className="mini-button" onClick={() => onRemoveEntry(index)}>
+                <Button className="mini-button" variant="mini" onClick={() => onRemoveEntry(index)}>
                   Remove
-                </button>
+                </Button>
               )}
             </div>
           ))}

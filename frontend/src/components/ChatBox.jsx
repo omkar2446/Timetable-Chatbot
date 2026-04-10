@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import LoadingSkeleton from './LoadingSkeleton'
 
 function ChatBox({ messages, loading }) {
   const viewportRef = useRef(null)
@@ -12,6 +13,12 @@ function ChatBox({ messages, loading }) {
 
   return (
     <div className="chat-box" ref={viewportRef}>
+      {!messages.length && !loading && (
+        <div className="chat-empty">
+          <strong>Start the conversation</strong>
+          <p>Ask about class timing, teacher schedules, today's lectures, or the next upcoming session.</p>
+        </div>
+      )}
       {messages.map((message) => (
         <article key={message.id} className={`chat-bubble ${message.sender}`}>
           <p>{message.text}</p>
@@ -20,7 +27,12 @@ function ChatBox({ messages, loading }) {
       ))}
       {loading && (
         <article className="chat-bubble bot pending">
-          <p>Thinking about your timetable...</p>
+          <div className="typing-indicator" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+          <LoadingSkeleton lines={2} compact className="chat-skeleton" />
         </article>
       )}
     </div>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { parseMinutes } from '../utils/time'
+import Button from './Button'
 
 function NotificationSystem({ lectures, nextLecture }) {
   const remindedRef = useRef(new Set())
@@ -85,9 +86,9 @@ function NotificationSystem({ lectures, nextLecture }) {
       </div>
 
       {permission !== 'granted' && (
-        <button className="ghost-button" onClick={enableNotifications}>
+        <Button className="ghost-button" variant="ghost" onClick={enableNotifications}>
           Enable Notifications
-        </button>
+        </Button>
       )}
 
       {lastReminder && <p className="status-text">{lastReminder}</p>}

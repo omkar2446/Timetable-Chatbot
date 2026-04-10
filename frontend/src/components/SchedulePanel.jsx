@@ -1,4 +1,6 @@
-function SchedulePanel({ todayData, role }) {
+import LoadingSkeleton from './LoadingSkeleton'
+
+function SchedulePanel({ todayData, role, loading }) {
   return (
     <div className="glass-card schedule-panel">
       <div className="section-heading">
@@ -10,16 +12,18 @@ function SchedulePanel({ todayData, role }) {
       <div className="summary-grid">
         <div className="summary-card">
           <span>Current Lecture</span>
-          <strong>{todayData.currentLecture?.subject || 'No live lecture'}</strong>
+          {loading ? <LoadingSkeleton lines={1} compact /> : <strong>{todayData.currentLecture?.subject || 'No live lecture'}</strong>}
         </div>
         <div className="summary-card">
           <span>Next Lecture</span>
-          <strong>{todayData.nextLecture?.subject || 'No upcoming lecture'}</strong>
+          {loading ? <LoadingSkeleton lines={1} compact /> : <strong>{todayData.nextLecture?.subject || 'No upcoming lecture'}</strong>}
         </div>
       </div>
 
       <div className="schedule-list">
-        {todayData.lectures?.length ? (
+        {loading ? (
+          <LoadingSkeleton lines={4} />
+        ) : todayData.lectures?.length ? (
           todayData.lectures.map((lecture) => (
             <article
               key={`${lecture.day}-${lecture.time}-${lecture.subject}-${lecture.teacher}`}
@@ -28,7 +32,7 @@ function SchedulePanel({ todayData, role }) {
               <div>
                 <strong>{lecture.subject}</strong>
                 <span>
-                  {lecture.time} | {lecture.teacher}
+                  {lecture.time} to {lecture.endTime || lecture.time} | {lecture.teacher}
                   {lecture.className ? ` | ${lecture.className}` : ''}
                 </span>
               </div>
