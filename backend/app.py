@@ -334,6 +334,14 @@ def lecture_matches_time(
         if start <= candidate < end:
             return True, candidate, end
 
+    # If no minutes were strictly matched, fuzzy match by hour block
+    if not time_query.get("minuteSpecified"):
+        for candidate in get_time_query_candidates(time_query):
+            candidate_hour = candidate // 60
+            start_hour = start // 60
+            if candidate_hour == start_hour:
+                return True, start, end
+
     return False, None, end
 
 
@@ -374,6 +382,32 @@ def extract_teacher_name(message: str, lectures: list[dict[str, Any]]) -> str | 
         score = len(message_tokens.intersection(teacher_tokens))
         if score > best_score:
             best_match = teacher
+            best_score = score
+    return best_match if best_score else None
+
+
+def extract_subject_name(message: str, lectures: list[dict[str, Any]]) -> str | None:
+    lowered = normalize_query_text(message)
+    candidates = sorted({lecture["subject"] for lecture in lectures if lecture.get("subject")}, key=len, reverse=True)
+    for subject in candidates:
+        if subject.lower() in lowered:
+            return subject
+    message_tokens = {
+        token
+        for token in re.findall(r"[a-z0-9]+", lowered)
+        if len(token) >= 2
+    }
+    best_match = None
+    best_score = 0
+    for subject in candidates:
+        subject_tokens = {
+            token
+            for token in re.findall(r"[a-z0-9]+", subject.lower())
+            if len(token) >= 2
+        }
+        score = len(message_tokens.intersection(subject_tokens))
+        if score > best_score:
+            best_match = subject
             best_score = score
     return best_match if best_score else None
 
@@ -454,6 +488,8 @@ def chat_response(data: dict[str, Any], message: str, user: dict[str, Any]) -> d
     time_query = extract_time_query(normalized_message)
     teacher_name = extract_teacher_name(normalized_message, full_schedule)
 
+    subject_name = extract_subject_name(normalized_message, full_schedule)
+
     if has_any_keyword(lowered, ["hello", "hi", "hey", "good morning", "good afternoon", "good evening"]):
         return {
             "reply": f"{build_greeting()}, {user.get('name', 'there')}! Ask me about your timetable, next lecture, or today's schedule.",
@@ -489,68 +525,110 @@ def chat_response(data: dict[str, Any], message: str, user: dict[str, Any]) -> d
             }
         return {"reply": f"There are no more lectures scheduled for {requested_day}.", "today": requested_day, "todaySchedule": annotated["lectures"], "currentLecture": annotated["currentLecture"], "nextLecture": None}
 
-    if teacher_name:
-        teacher_day_matches = [lecture for lecture in day_schedule if lecture["teacher"] == teacher_name]
+    entity_name = teacher_name or subject_name
+    if entity_name:
+        is_teacher = bool(teacher_name)
+        day_matches = [
+            lecture for lecture in day_schedule 
+            if (is_teacher and lecture["teacher"] == entity_name) or (not is_teacher and lecture["subject"] == entity_name)
+        ]
         if time_query:
-            teacher_time_match, matched_query_time = find_lecture_for_time(teacher_day_matches, time_query)
-            if teacher_time_match:
-                class_note = f" for {teacher_time_match['className']}" if teacher_time_match.get("className") else ""
-                query_time_label = minutes_to_time_string(matched_query_time or parse_time_to_minutes(teacher_time_match["time"]) or 0)
+            time_match, matched_query_time = find_lecture_for_time(day_matches, time_query)
+            if time_match:
+                class_note = f" for {time_match['className']}" if time_match.get("className") else ""
+                query_time_label = minutes_to_time_string(matched_query_time or parse_time_to_minutes(time_match["time"]) or 0)
+                if is_teacher:
+                    reply = f"At {query_time_label}, {entity_name} is teaching {time_match['subject']}{class_note}. It runs from {time_match['time']} to {time_match['endTime']}."
+                else:
+                    reply = f"At {query_time_label}, you have {entity_name}{class_note} with {time_match['teacher']}. It runs from {time_match['time']} to {time_match['endTime']}."
+
                 return {
-                    "reply": f"At {query_time_label}, {teacher_name} is teaching {teacher_time_match['subject']}{class_note}. It runs from {teacher_time_match['time']} to {teacher_time_match['endTime']}.",
+                    "reply": reply,
                     "today": requested_day,
                     "todaySchedule": annotated["lectures"],
                     "currentLecture": annotated["currentLecture"],
                     "nextLecture": annotated["nextLecture"],
                 }
-            teacher_day_matches = []
-        if teacher_day_matches:
+            day_matches = []
+            
+        if day_matches:
+            if is_teacher:
+                prefix = f"{entity_name} does not have a lecture on {requested_day}."
+                reply = format_lecture_response(day_matches, requested_day, prefix)
+            else:
+                if len(day_matches) == 1:
+                    lecture = day_matches[0]
+                    class_note = f" for {lecture['className']}" if lecture.get("className") else ""
+                    reply = f"{lecture['subject']}{class_note} with {lecture['teacher']} is at {lecture['time']} on {requested_day}."
+                else:
+                    details = ", ".join(f"at {lecture['time']}" for lecture in day_matches)
+                    reply = f"You have {len(day_matches)} {entity_name} lectures on {requested_day}: {details}. Taught by {day_matches[0]['teacher']}."
+
             return {
-                "reply": format_lecture_response(teacher_day_matches, requested_day, f"{teacher_name} does not have a lecture on {requested_day}."),
+                "reply": reply,
                 "today": requested_day,
                 "todaySchedule": annotated["lectures"],
                 "currentLecture": annotated["currentLecture"],
                 "nextLecture": annotated["nextLecture"],
             }
 
-        teacher_any_matches = [lecture for lecture in full_schedule if lecture["teacher"] == teacher_name]
+        any_matches = [
+            lecture for lecture in full_schedule 
+            if (is_teacher and lecture["teacher"] == entity_name) or (not is_teacher and lecture["subject"] == entity_name)
+        ]
         if time_query:
-            teacher_time_match, matched_query_time = find_lecture_for_time(teacher_any_matches, time_query)
-            if teacher_time_match:
-                class_note = f" for {teacher_time_match['className']}" if teacher_time_match.get("className") else ""
-                query_time_label = minutes_to_time_string(matched_query_time or parse_time_to_minutes(teacher_time_match["time"]) or 0)
+            time_match, matched_query_time = find_lecture_for_time(any_matches, time_query)
+            if time_match:
+                class_note = f" for {time_match['className']}" if time_match.get("className") else ""
+                query_time_label = minutes_to_time_string(matched_query_time or parse_time_to_minutes(time_match["time"]) or 0)
+                if is_teacher:
+                    reply = f"At {query_time_label}, {entity_name} is teaching {time_match['subject']}{class_note} on {time_match['day']}. It runs from {time_match['time']} to {time_match['endTime']}."
+                else:
+                    reply = f"At {query_time_label}, you have {entity_name}{class_note} with {time_match['teacher']} on {time_match['day']}. It runs from {time_match['time']} to {time_match['endTime']}."
                 return {
-                    "reply": f"At {query_time_label}, {teacher_name} is teaching {teacher_time_match['subject']}{class_note} on {teacher_time_match['day']}. It runs from {teacher_time_match['time']} to {teacher_time_match['endTime']}.",
+                    "reply": reply,
                     "today": requested_day,
                     "todaySchedule": annotated["lectures"],
                     "currentLecture": annotated["currentLecture"],
                     "nextLecture": annotated["nextLecture"],
                 }
-            teacher_any_matches = []
-        if teacher_any_matches:
+            any_matches = []
+            
+        if any_matches:
             reference_minutes = now_minutes if requested_day == today else None
-            next_teacher_lecture = min(
-                teacher_any_matches,
+            next_lecture = min(
+                any_matches,
                 key=lambda lecture: get_occurrence_sort_key(lecture, requested_day, reference_minutes),
             )
-            class_note = f" for {next_teacher_lecture['className']}" if next_teacher_lecture.get("className") else ""
+            class_note = f" for {next_lecture['className']}" if next_lecture.get("className") else ""
             if explicit_day_requested:
+                if is_teacher:
+                    reply = f"{entity_name} does not have a lecture on {requested_day}. The next one is {next_lecture['day']} at {next_lecture['time']} with {next_lecture['subject']}{class_note}."
+                else:
+                    reply = f"You don't have {entity_name} on {requested_day}. The next one is {next_lecture['day']} at {next_lecture['time']} with {next_lecture['teacher']}{class_note}."
                 return {
-                    "reply": f"{teacher_name} does not have a lecture on {requested_day}. The next one is {next_teacher_lecture['day']} at {next_teacher_lecture['time']} with {next_teacher_lecture['subject']}{class_note}.",
+                    "reply": reply,
                     "today": requested_day,
                     "todaySchedule": annotated["lectures"],
                     "currentLecture": annotated["currentLecture"],
                     "nextLecture": annotated["nextLecture"],
                 }
+            
+            if is_teacher:
+                reply = f"{entity_name} next appears on {next_lecture['day']} at {next_lecture['time']} with {next_lecture['subject']}{class_note}."
+            else:
+                reply = f"Your next {entity_name} lecture is on {next_lecture['day']} at {next_lecture['time']} with {next_lecture['teacher']}{class_note}."
+                
             return {
-                "reply": f"{teacher_name} next appears on {next_teacher_lecture['day']} at {next_teacher_lecture['time']} with {next_teacher_lecture['subject']}{class_note}.",
+                "reply": reply,
                 "today": requested_day,
                 "todaySchedule": annotated["lectures"],
                 "currentLecture": annotated["currentLecture"],
                 "nextLecture": annotated["nextLecture"],
             }
+            
         return {
-            "reply": f"I could not find a {teacher_name} lecture for that day or time.",
+            "reply": f"I could not find a {entity_name} lecture for that day or time.",
             "today": requested_day,
             "todaySchedule": annotated["lectures"],
             "currentLecture": annotated["currentLecture"],

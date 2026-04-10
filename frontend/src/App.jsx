@@ -8,6 +8,8 @@ import NotificationSystem from './components/NotificationSystem'
 import RoleSelector from './components/RoleSelector'
 import SchedulePanel from './components/SchedulePanel'
 import TimetableForm from './components/TimetableForm'
+import ParticleBackground from './components/ParticleBackground'
+import Logo from './components/Logo'
 import { api, endpoints } from './services/api'
 import {
   CLASS_OPTIONS,
@@ -34,16 +36,10 @@ const createTeacherDraft = (name = '') => ({
   className: 'SecondYear_A',
 })
 
-const promptExamples = [
-  'Which lecture is at 9:30?',
-  'What is my next lecture?',
-  'When is Nirmal Sir lecture today?',
-  'Monday 10 a clock lecture',
-]
+// Layout constants removed for a cleaner chat interface
 
 function App() {
-  const appShellRef = useRef(null)
-  const birdsEffectRef = useRef(null)
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme-preference') || 'light')
   const [step, setStep] = useState('name')
   const [name, setName] = useState('')
   const [user, setUser] = useState({
@@ -74,36 +70,13 @@ function App() {
   const hasBootstrapped = useRef(false)
 
   useEffect(() => {
-    if (!appShellRef.current || !window.VANTA?.BIRDS || birdsEffectRef.current) {
-      return undefined
-    }
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme-preference', theme)
+  }, [theme])
 
-    birdsEffectRef.current = window.VANTA.BIRDS({
-      el: appShellRef.current,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.0,
-      minWidth: 200.0,
-      scale: 1.0,
-      scaleMobile: 1.0,
-      backgroundAlpha: 0,
-      color1: 0xffd166,
-      color2: 0xff7b54,
-      birdSize: 1.2,
-      wingSpan: 24.0,
-      speedLimit: 4.0,
-      separation: 40.0,
-      alignment: 32.0,
-      cohesion: 28.0,
-      quantity: 3.0,
-    })
+  const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light')
 
-    return () => {
-      birdsEffectRef.current?.destroy()
-      birdsEffectRef.current = null
-    }
-  }, [])
+  // Vanta Birds effect removed for cleaner aesthetic
 
   const quickActions = useMemo(() => {
     if (user.role === 'teacher') {
@@ -120,26 +93,7 @@ function App() {
     ]
   }, [user.name, user.role, user.teacherName])
 
-  const heroStats = useMemo(
-    () => [
-      {
-        label: 'Supported roles',
-        value: 'Student + Teacher',
-        note: 'Two tailored onboarding flows',
-      },
-      {
-        label: 'Reminder engine',
-        value: '5 min alerts',
-        note: 'Browser notifications or fallback alerts',
-      },
-      {
-        label: 'Timetable source',
-        value: 'JSON powered',
-        note: 'Fast updates without database overhead',
-      },
-    ],
-    [],
-  )
+  // Hero stats removed
 
   const selectedTemplate = allTimetables?.timetable?.[user.className]
   const dashboardHighlights = useMemo(
@@ -423,93 +377,70 @@ function App() {
   }
 
   return (
-    <div className="app-shell" ref={appShellRef}>
-      <div className="background-overlay" aria-hidden="true" />
-
+    <div className="app-shell">
+      <ParticleBackground />
       <main className="app-frame">
-        <section className="hero-panel glass-card scene-card">
-          <div className="hero-grid">
-            <div className="hero-copy">
-              <span className="hero-badge">Competition-ready timetable assistant</span>
-              <h1>Modern AI timetable chat for college events and lecture planning.</h1>
-              <p>
-                Clean onboarding, flexible timetable queries, day-wise schedule visibility, and gentle reminder
-                automation in one polished web application.
-              </p>
-              <div className="hero-tags">
-                <span>Responsive dashboard</span>
-                <span>Fast JSON backend</span>
-                <span>Voice enabled input</span>
-                <span>Teacher console</span>
-              </div>
-            </div>
-
-            <div className="hero-metrics">
-              {heroStats.map((item) => (
-                <article key={item.label} className="hero-metric-card">
-                  <span>{item.label}</span>
-                  <strong>{item.value}</strong>
-                  <p>{item.note}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {step !== 'chat' ? (
-          <section className="setup-grid">
-            <div className="glass-card flow-card scene-card">
+          <section className="setup-container">
+            <div className="glass-panel setup-panel fade-in">
+              <div className="brand-header" style={{ justifyContent: 'space-between', width: '100%' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <Logo className="brand-logo" />
+                  <h1>ParvAI</h1>
+                </div>
+                <Button className="ui-button--mini" variant="ghost" onClick={toggleTheme}>
+                  {theme === 'light' ? '🌙' : '☀️'}
+                </Button>
+              </div>
+
               {step === 'name' && (
-                <>
-                  <div className="section-heading">
-                    <span className="eyebrow">Step 1</span>
-                    <h2>Enter Your Name</h2>
-                    <p>Start with your identity so the interface can personalize the chatbot and save your workflow.</p>
+                <div className="setup-step">
+                  <div className="step-content">
+                    <h2>Welcome</h2>
+                    <p>Enter your name to initialize the assistant.</p>
                   </div>
-                  <div className="form-row">
+                  <div className="form-group">
                     <input
-                      className="text-input"
+                      className="input-base"
                       value={name}
                       onChange={(event) => setName(event.target.value)}
                       onKeyDown={(event) => event.key === 'Enter' && handleNameSubmit()}
-                      placeholder="Enter your name"
+                      placeholder="Your name"
+                      autoFocus
                     />
-                    <Button className="primary-button" variant="primary" onClick={handleNameSubmit}>
+                    <Button className="btn-primary w-full" variant="primary" onClick={handleNameSubmit}>
                       Continue
                     </Button>
                   </div>
-                </>
+                </div>
               )}
 
               {step === 'role' && <RoleSelector name={user.name} onSelect={handleRoleSelect} />}
 
               {step === 'student-mode' && (
-                <>
-                  <div className="section-heading">
-                    <span className="eyebrow">Step 3</span>
-                    <h2>Choose Student Mode</h2>
-                    <p>Upload a custom timetable for the event, or enter directly with a predefined class template.</p>
+                <div className="setup-step">
+                  <div className="step-content">
+                    <h2>Select Mode</h2>
+                    <p>Choose how you want to set up your schedule.</p>
                   </div>
-                  <div className="option-grid">
-                    <Button className="option-card" variant="option" onClick={() => handleStudentModeSelect('custom')}>
-                      <span className="option-card__eyebrow">Personal workflow</span>
-                      <strong>Upload Timetable</strong>
-                      <span>Build a custom schedule with multiple lectures and store it against your name.</span>
+                  <div className="grid-options">
+                    <Button className="btn-card" variant="option" onClick={() => handleStudentModeSelect('custom')}>
+                      <strong>Custom Schedule</strong>
+                      <span>Create and upload your own timetable.</span>
                     </Button>
-                    <Button className="option-card" variant="option" onClick={() => handleStudentModeSelect('template')}>
-                      <span className="option-card__eyebrow">Fast start</span>
-                      <strong>Select Existing Template</strong>
-                      <span>Jump in with a curated academic timetable for your year or division.</span>
+                    <Button className="btn-card" variant="option" onClick={() => handleStudentModeSelect('template')}>
+                      <strong>Use Template</strong>
+                      <span>Select an existing class template.</span>
                     </Button>
                   </div>
-                </>
+                </div>
               )}
 
               {step === 'student-upload' && (
                 <TimetableForm
                   mode="student"
-                  title="Upload Custom Timetable"
-                  subtitle="Add multiple lecture entries, then save them under your name."
+                  title="Custom Timetable"
+                  subtitle="Add your lectures and save your schedule."
                   entry={studentEntry}
                   entries={studentEntries}
                   onEntryChange={setStudentEntry}
@@ -521,17 +452,16 @@ function App() {
               )}
 
               {step === 'student-template' && (
-                <>
-                  <div className="section-heading">
-                    <span className="eyebrow">Step 3</span>
-                    <h2>Select Existing Template</h2>
-                    <p>Choose your year and continue into the polished timetable assistant dashboard.</p>
+                <div className="setup-step">
+                  <div className="step-content">
+                    <h2>Select Class</h2>
+                    <p>Pick your year and division.</p>
                   </div>
-                  <div className="template-options">
+                  <div className="chip-group">
                     {CLASS_OPTIONS.map((option) => (
                       <Button
                         key={option}
-                        className="pill-button"
+                        className={`chip ${user.className === option ? 'active' : ''}`}
                         variant="pill"
                         active={user.className === option}
                         onClick={() => setUser((current) => ({ ...current, className: option }))}
@@ -540,17 +470,17 @@ function App() {
                       </Button>
                     ))}
                   </div>
-                  <Button className="primary-button" variant="primary" onClick={continueWithTemplate} disabled={loading} loading={loading}>
-                    {loading ? 'Loading...' : 'Enter Chat Interface'}
+                  <Button className="btn-primary w-full" variant="primary" onClick={continueWithTemplate} disabled={loading} loading={loading}>
+                    {loading ? 'Entering...' : 'Enter Chat'}
                   </Button>
-                </>
+                </div>
               )}
 
               {step === 'teacher-setup' && (
                 <TimetableForm
                   mode="teacher"
-                  title="Teacher Timetable Management"
-                  subtitle="Add or update a lecture, then open the dashboard to view your schedule and answer timetable questions."
+                  title="Teacher Dashboard Setup"
+                  subtitle="Configure your schedule or continue to chat."
                   entry={teacherDraft}
                   entries={teacherLectures}
                   onEntryChange={setTeacherDraft}
@@ -561,103 +491,62 @@ function App() {
               )}
 
               {statusMessage && (
-                <div className="status-banner">
-                  <span className="status-dot" />
+                <div className="status-toast">
+                  <span className="status-indicator"></span>
                   <p>{statusMessage}</p>
                 </div>
               )}
             </div>
-
-            <div className="aside-stack">
-              <div className="glass-card preview-card scene-card">
-                <div className="section-heading">
-                  <span className="eyebrow">Prompt Ideas</span>
-                  <h2>What The Bot Understands</h2>
-                  <p>Loose natural language, teacher lookups, time windows, and day-wise schedule requests.</p>
-                </div>
-                <div className="prompt-grid">
-                  {promptExamples.map((prompt) => (
-                    <article key={prompt} className="prompt-card">
-                      <span className="prompt-card__label">Sample query</span>
-                      <strong>{prompt}</strong>
-                    </article>
-                  ))}
-                </div>
-              </div>
-
-              <div className="glass-card preview-card scene-card">
-                <div className="section-heading">
-                  <span className="eyebrow">Template Snapshot</span>
-                  <h2>{user.className || 'Choose a template to preview'}</h2>
-                  <p>Quick lecture counts for the first three weekdays so the user sees immediate structure.</p>
-                </div>
-
-                {isTimetableLoading ? (
-                  <LoadingSkeleton lines={5} />
-                ) : selectedTemplate ? (
-                  <div className="preview-days">
-                    {DAY_OPTIONS.slice(0, 3).map((day) => (
-                      <div key={day} className="preview-day-card">
-                        <span>{day}</span>
-                        <strong>{selectedTemplate[day]?.length || 0}</strong>
-                        <p>lectures scheduled</p>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="empty-panel">
-                    <strong>Waiting for selection</strong>
-                    <p>Pick a year template to see how many sessions are scheduled across the week.</p>
-                  </div>
-                )}
-              </div>
-            </div>
           </section>
         ) : (
-          <section className="dashboard-grid">
-            <div className="glass-card chat-panel scene-card">
-              <div className="chat-header">
-                <div>
-                  <span className="eyebrow">Live Assistant</span>
-                  <h2>{user.role === 'teacher' ? 'Teacher Dashboard' : 'Student Chat Interface'}</h2>
+          <section className="dashboard-layout fade-in">
+            <div className="chat-container glass-panel">
+              <header className="chat-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <Logo className="brand-logo" style={{ width: '28px', height: '28px' }} />
+                  <div>
+                    <h2 className="header-title">ParvAI</h2>
+                    <span className="header-subtitle">
+                      {user.role === 'teacher' ? 'Teacher Mode' : 'Student Mode'}
+                    </span>
+                  </div>
                 </div>
-                <div className="chat-meta">
-                  <span>{user.name}</span>
-                  <span>{user.role === 'teacher' ? user.teacherName || user.name : user.className || 'Custom timetable'}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <Button className="ui-button--mini" variant="ghost" onClick={toggleTheme}>
+                    {theme === 'light' ? '🌙' : '☀️'}
+                  </Button>
+                  <div className="user-badge">
+                    {user.name[0].toUpperCase()}
+                  </div>
                 </div>
-              </div>
+              </header>
 
-              <div className="dashboard-highlight-row">
-                {dashboardHighlights.map((item) => (
-                  <article key={item.label} className="highlight-card">
-                    <span>{item.label}</span>
-                    <strong>{item.value}</strong>
-                  </article>
-                ))}
-              </div>
-
-              <div className="quick-actions">
+              <div className="quick-prompts">
                 {quickActions.map((action) => (
-                  <Button key={action} className="chip-button" variant="chip" onClick={() => sendMessage(action)}>
+                  <Button key={action} className="prompt-chip" variant="chip" onClick={() => sendMessage(action)}>
                     {action}
                   </Button>
                 ))}
               </div>
 
-              <ChatBox messages={messages} loading={chatLoading} />
-              <InputBox onSend={sendMessage} loading={chatLoading} />
+              <div className="chat-view">
+                <ChatBox messages={messages} loading={chatLoading} />
+              </div>
+              <div className="input-view">
+                <InputBox onSend={sendMessage} loading={chatLoading} />
+              </div>
             </div>
 
-            <div className="side-column">
+            <aside className="sidebar-container">
               <SchedulePanel todayData={todayData} role={user.role} loading={isTodayLoading} />
               <NotificationSystem lectures={todayData.lectures} nextLecture={todayData.nextLecture} />
 
               {user.role === 'teacher' && (
-                <div className="glass-card compact-panel scene-card">
+                <div className="glass-panel side-panel">
                   <TimetableForm
                     mode="teacher"
-                    title="Add Or Update Timetable"
-                    subtitle="Keep your lecture slots updated without leaving the dashboard."
+                    title="Quick Update"
+                    subtitle="Add lectures instantly."
                     entry={teacherDraft}
                     entries={teacherLectures}
                     onEntryChange={setTeacherDraft}
@@ -667,7 +556,7 @@ function App() {
                   />
                 </div>
               )}
-            </div>
+            </aside>
           </section>
         )}
       </main>

@@ -31,6 +31,19 @@ function Button({
     }
   }
 
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    // Calculate relative mouse position
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+    event.currentTarget.style.setProperty('--mouse-x', `${x}px`)
+    event.currentTarget.style.setProperty('--mouse-y', `${y}px`)
+
+    if (props.onMouseMove) {
+      props.onMouseMove(event)
+    }
+  }
+
   const classes = [
     'ui-button',
     `ui-button--${variant}`,
@@ -42,7 +55,14 @@ function Button({
     .join(' ')
 
   return (
-    <button {...props} type={props.type || 'button'} className={classes} onMouseDown={handleMouseDown}>
+    <button 
+      {...props} 
+      type={props.type || 'button'} 
+      className={classes} 
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+    >
+      <span className="ui-button__spotlight" aria-hidden="true" />
       <span className="ui-button__content">
         {loading && <span className="button-spinner" aria-hidden="true" />}
         {children}
