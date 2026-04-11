@@ -119,36 +119,7 @@ function App() {
     [todayData.day, todayData.lectures?.length, user.className, user.role, user.timetableMode],
   )
 
-  useEffect(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null')
-      if (!saved) {
-        return
-      }
-      setStep(saved.step || 'name')
-      setName(saved.name || '')
-      setUser(saved.user || {})
-      setMessages(saved.messages || [])
-      setTodayData(saved.todayData || { day: '', greeting: '', lectures: [], currentLecture: null, nextLecture: null })
-      setTeacherLectures(saved.teacherLectures || [])
-    } catch {
-      localStorage.removeItem(STORAGE_KEY)
-    }
-  }, [])
 
-  useEffect(() => {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        step,
-        name,
-        user,
-        messages,
-        todayData,
-        teacherLectures,
-      }),
-    )
-  }, [messages, name, step, teacherLectures, todayData, user])
 
   useEffect(() => {
     const fetchTimetable = async () => {

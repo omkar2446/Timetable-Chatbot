@@ -995,3 +995,163 @@ button {
   color: var(--text-tertiary);
   font-style: italic;
 }
+
+/* ===== MOBILE & RESPONSIVE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  /* Frame & Containers */
+  .app-frame {
+    padding: 0;
+  }
+  
+  .setup-container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .setup-panel {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+    border-radius: 16px;
+  }
+
+  /* Typography Scaling */
+  .section-heading h2,
+  .setup-step h2 {
+    font-size: 1.8rem;
+  }
+
+  .brand-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .brand-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Grids to Single Column */
+  .form-grid,
+  .option-grid,
+  .grid-options,
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Components */
+  .input-base,
+  .text-input {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .ui-button--primary,
+  .ui-button--pill,
+  .ui-button--chip {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .ui-button--option {
+    padding: 1rem;
+  }
+
+  .ui-button--option strong {
+    font-size: 1.1rem;
+  }
+
+  /* Dashboard Core Layout */
+  .dashboard-layout {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: var(--bg-deep);
+  }
+
+  /* Hide sidebar panels when interacting with chat input */
+  .dashboard-layout:focus-within .sidebar-container {
+    display: none;
+  }
+
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .chat-header {
+    padding: 1rem;
+  }
+
+  .quick-prompts {
+    padding: 0.5rem 1rem;
+  }
+
+  .chat-view {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .input-view {
+    padding: 0.75rem 1rem;
+  }
+
+  .input-box-wrapper {
+    padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  .text-input.chat-input {
+    font-size: 1rem;
+  }
+
+  .action-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Sidebar transitions to a horizontal scrollable strip */
+  .sidebar-container {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1rem;
+    gap: 1rem;
+    background: var(--bg-deep);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+  }
+
+  .sidebar-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar-container > * {
+    flex: 0 0 calc(100vw - 3rem);
+    max-height: 35dvh;
+    overflow-y: auto;
+    scroll-snap-align: center;
+  }
+
+  .side-panel,
+  .schedule-item {
+    padding: 1rem;
+  }
+
+  /* Chat Messages */
+  .message-blob {
+    max-width: 90%;
+  }
+
+  .message-content {
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
+  }
+}
