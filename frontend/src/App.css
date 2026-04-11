@@ -621,6 +621,38 @@ button {
   border-top: 1px solid var(--border-light);
 }
 
+/* ===== AUTO SUGGESTIONS ===== */
+.suggestions-list {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 8px;
+  list-style: none;
+  padding: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.suggestion-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.suggestion-item:hover,
+.suggestion-item.active {
+  background: var(--accent-glow);
+  color: var(--accent-base);
+}
+
 /* ===== SIDEBAR ===== */
 .sidebar-container {
   display: flex;

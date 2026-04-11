@@ -32,6 +32,11 @@ QUERY_CORRECTIONS = {
     "mondag": "monday",
     "monady": "monday",
     "mnday": "monday",
+    "teusday": "tuesday",
+    "tusday": "tuesday",
+    "wednsday": "wednesday",
+    "wensday": "wednesday",
+    "thurday": "thursday",
     "tuday": "today",
     "todai": "today",
 }
@@ -364,7 +369,7 @@ def extract_teacher_name(message: str, lectures: list[dict[str, Any]]) -> str | 
     lowered = normalize_query_text(message)
     candidates = sorted({lecture["teacher"] for lecture in lectures if lecture.get("teacher")}, key=len, reverse=True)
     for teacher in candidates:
-        if teacher.lower() in lowered:
+        if has_keyword(lowered, teacher.lower()):
             return teacher
     message_tokens = {
         token
@@ -390,7 +395,7 @@ def extract_subject_name(message: str, lectures: list[dict[str, Any]]) -> str | 
     lowered = normalize_query_text(message)
     candidates = sorted({lecture["subject"] for lecture in lectures if lecture.get("subject")}, key=len, reverse=True)
     for subject in candidates:
-        if subject.lower() in lowered:
+        if has_keyword(lowered, subject.lower()):
             return subject
     message_tokens = {
         token
