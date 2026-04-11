@@ -1,11 +1,14 @@
 import LoadingSkeleton from './LoadingSkeleton'
+import { getGreetingByHour } from '../utils/time'
 
 function SchedulePanel({ todayData, role, loading }) {
+  const currentGreeting = getGreetingByHour(new Date().getHours())
+
   return (
     <div className="glass-card schedule-panel">
       <div className="section-heading">
         <span className="eyebrow">Today</span>
-        <h2>{todayData.greeting || 'Schedule Overview'}</h2>
+        <h2>{currentGreeting}</h2>
         <p>{todayData.day ? `${todayData.day} schedule` : 'Waiting for timetable data...'}</p>
       </div>
 
