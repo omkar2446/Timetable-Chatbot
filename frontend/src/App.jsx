@@ -386,7 +386,7 @@ function App() {
                     </Button>
                   )}
                   <Logo className="brand-logo" />
-                  <h1>ParvAI</h1>
+                  <h1>PravAI</h1>
                 </div>
                 <Button className="ui-button--mini" variant="ghost" onClick={toggleTheme}>
                   {theme === 'light' ? '🌙' : '☀️'}
@@ -513,7 +513,7 @@ function App() {
                   </Button>
                   <Logo className="brand-logo" style={{ width: '28px', height: '28px' }} />
                   <div>
-                    <h2 className="header-title">ParvAI</h2>
+                    <h2 className="header-title">PravAI</h2>
                     <span className="header-subtitle">
                       {user.role === 'teacher' ? 'Teacher Mode' : 'Student Mode'}
                     </span>
