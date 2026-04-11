@@ -415,7 +415,12 @@ def extract_subject_name(message: str, lectures: list[dict[str, Any]]) -> str | 
 def has_keyword(message: str, keyword: str) -> bool:
     if " " in keyword:
         return keyword in message
-    return re.search(rf"\b{re.escape(keyword)}\b", message) is not None
+    if re.search(rf"\b{re.escape(keyword)}\b", message) is not None:
+        return True
+    if len(keyword) >= 4:
+        tokens = re.findall(r"[a-z0-9]+", message.lower())
+        return len(get_close_matches(keyword.lower(), tokens, n=1, cutoff=0.8)) > 0
+    return False
 
 
 def has_any_keyword(message: str, keywords: list[str]) -> bool:
@@ -658,16 +663,7 @@ def chat_response(data: dict[str, Any], message: str, user: dict[str, Any]) -> d
             }
         return {"reply": f"I could not find a lecture around that time on {requested_day}.", "today": requested_day, "todaySchedule": annotated["lectures"], "currentLecture": annotated["currentLecture"], "nextLecture": annotated["nextLecture"]}
 
-    if has_any_keyword(lowered, ["today", "schedule"]):
-        return {
-            "reply": format_schedule_summary(requested_day, annotated["lectures"], role),
-            "today": requested_day,
-            "todaySchedule": annotated["lectures"],
-            "currentLecture": annotated["currentLecture"],
-            "nextLecture": annotated["nextLecture"],
-        }
-
-    if explicit_day_requested and not time_query and not teacher_name and has_any_keyword(lowered, ["lecture", "lectures", "class", "classes"]):
+    if explicit_day_requested or has_any_keyword(lowered, ["schedule", "timetable", "lecture", "lectures", "class", "classes", "day"]):
         return {
             "reply": format_schedule_summary(requested_day, annotated["lectures"], role),
             "today": requested_day,
