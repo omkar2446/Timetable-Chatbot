@@ -357,15 +357,20 @@ button {
 }
 
 .ui-button--option {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
   padding: 1.5rem;
   background: rgba(22, 22, 28, 0.4);
   border: 1px solid var(--border-med);
   text-align: left;
   height: 100%;
+  align-items: stretch;
+}
+
+.ui-button--option .ui-button__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .ui-button--option .ui-button__spotlight {

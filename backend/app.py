@@ -460,7 +460,7 @@ def get_occurrence_sort_key(lecture: dict[str, Any], reference_day: str, referen
 
 def build_greeting() -> str:
     current_hour = datetime.now().hour
-    if 5 <= current_hour < 12:
+    if current_hour < 12:
         return "Good Morning ☀️"
     if 12 <= current_hour < 17:
         return "Good Afternoon 🌤️"

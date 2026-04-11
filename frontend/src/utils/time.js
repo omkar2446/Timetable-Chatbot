@@ -2,7 +2,7 @@ export const DAY_OPTIONS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 export const CLASS_OPTIONS = ['SecondYear_A', 'SecondYear_B', 'ThirdYear', 'FourthYear']
 
 export const getGreetingByHour = (hour) => {
-  if (hour >= 5 && hour < 12) {
+  if (hour < 12) {
     return 'Good Morning ☀️'
   }
   if (hour >= 12 && hour < 17) {
